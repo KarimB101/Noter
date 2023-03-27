@@ -8,6 +8,10 @@ apiRoutes.get('/notes', (req, res) => {
 
 });
 
+router.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+}); //
+
 // POST Route for a error logging
 apiRoutes.post('/notes', (req, res) => {
     // GET * should return the index.html file.   

@@ -8,4 +8,8 @@ apiRoutes.get('/api/notes', (req, res) => {
 
 });
 
+router.post('api/notes', (req, res) => {
+
+});
+
 module.exports = apiRoutes;

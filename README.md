@@ -42,7 +42,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 
 * Application GitHub URL submitted.
- https://github.com/jtich40/note-taker/blob/main/README.md
+https://github.com/KarimB101/Noter
 
 
 

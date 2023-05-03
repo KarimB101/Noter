@@ -4,7 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-if (window.location.pathname === '/notes') {
+if (window.location.pathname == '../notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -26,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('/api/notes', {
+  fetch('../../db/db.json', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const getNotes = () =>
   });
 
 const saveNote = (note) =>
-  fetch('/api/notes', {
+  fetch('../../db/db.json', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -86,10 +86,11 @@ const handleNoteDelete = (e) => {
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
 
   if (activeNote.id === noteId) {
-    activeNote = {};
+    activeNote = {};e
   }
 
   deleteNote(noteId).then(() => {
+    console.log("note deleted")
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -103,8 +104,14 @@ const handleNoteView = (e) => {
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
-const handleNewNoteView = (e) => {
-  activeNote = {};
+// Sets the activeNote to a new empty object and allows the user to enter a new note
+const handleNewNoteView = () => {
+  console.log("new note added")
+  activeNote = { title: '', text: '' }; // create a new empty note object
+  // noteTitle.removeAttribute('readonly');
+  // noteText.removeAttribute('readonly');
+  // noteTitle.value = activeNote.title; // update the noteTitle input field with the new title
+  // noteText.value = activeNote.text; // update the noteText input field with the new text
   renderActiveNote();
 };
 
